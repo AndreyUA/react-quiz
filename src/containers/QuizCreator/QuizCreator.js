@@ -11,7 +11,7 @@ import Button from "../../components/UI/Button/Button";
 import Auxillary from "../../hoc/Auxillary/Auxillary";
 import Select from "../../components/UI/Select/Select";
 
-import axios from "axios";
+import axios from "../../axios/axios-quiz";
 
 function createOptionControl(number) {
   return createControl(
@@ -92,10 +92,7 @@ class QuizCreator extends Component {
     e.preventDefault();
 
     try {
-      await axios.post(
-        "https://react-quiz-644e2.firebaseio.com/quizes.json",
-        this.state.quiz
-      );
+      await axios.post("/quizes.json", this.state.quiz);
 
       this.setState({
         quiz: [],
